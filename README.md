@@ -93,7 +93,7 @@ This project qualifies for:
 - [ ] POLU token staking and governance
 
 ## 👥 Team
-Built for Blockchain Hackathon Mexico 2024
+Built for Hackathon Ethereum Mexico 2025.
 
 ## 📄 License
 MIT License - Feel free to build upon this project!

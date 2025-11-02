@@ -5,13 +5,12 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "./POLUToken.sol";
 
 contract PollutionRewards is Ownable {
-    POLUToken public poluToken;
+    POLUToken public immutable poluToken;
     
     struct Company {
         string name;
         uint256 totalRewards;
         uint256 lastRewardDate;
-        bool registered;
     }
     
     mapping(address => Company) public companies;
@@ -25,10 +24,15 @@ contract PollutionRewards is Ownable {
     }
     
     function registerCompany(address companyAddr, string memory name) external onlyOwner {
-        companies[companyAddr] = Company(name, 0, block.timestamp, true);
-        companyAddresses.push(companyAddr);
-        poluToken.addMinter(address(this));
+        require(bytes(companies[companyAddr].name).length == 0, "Company already registered");
+        require(bytes(name).length > 0, "Name cannot be empty");
+
+        Company storage company = companies[companyAddr];
+        company.name = name; 
+        company.totalRewards = 0;
+        company.lastRewardDate = block.timestamp;
         
+        companyAddresses.push(companyAddr);
         emit CompanyRegistered(companyAddr, name);
     }
     
@@ -37,9 +41,11 @@ contract PollutionRewards is Ownable {
         uint256 amount,
         string memory reason
     ) external onlyOwner {
-        require(companies[companyAddr].registered, "Company not registered");
+        require(bytes(companies[companyAddr].name).length > 0, "Company not registered");
+        require(amount > 0, "Amount must be greater than zero");
         
-        poluToken.mint(companyAddr, amount, reason);
+        poluToken.mint(companyAddr, amount, reason); 
+        
         companies[companyAddr].totalRewards += amount;
         companies[companyAddr].lastRewardDate = block.timestamp;
         

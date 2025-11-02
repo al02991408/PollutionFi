@@ -10,7 +10,7 @@ contract POLUToken is ERC20, Ownable {
     event TokensMinted(address indexed to, uint256 amount, string reason);
     
     constructor() ERC20("PollutionFi Token", "POLU") Ownable(msg.sender) {
-        _mint(msg.sender, 1000000 * 10**18); // 1 millón POLU
+        _mint(msg.sender, 1000000 * 10**18);
     }
     
     function mint(address to, uint256 amount, string memory reason) external onlyAuthorized {

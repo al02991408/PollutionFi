@@ -77,7 +77,11 @@ Visit `http://localhost:3000`
 
 ## 🏗️ Smart Contracts
 
+POLUToken
 https://sepolia.scrollscan.com/address/0x3fe0D624E4C14549A3891Cc2369C8616846aD821#code
+
+PollutionRewards
+https://sepolia.scrollscan.com/address/0xFFDE945BF1e565b32f147756a02c21C6e262cB08#code 
 
 ### POLUToken (ERC-20)
 - Total Supply: 1,000,000 POLU

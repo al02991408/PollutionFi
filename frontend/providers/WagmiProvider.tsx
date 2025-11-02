@@ -1,0 +1,27 @@
+"use client"
+
+import { createConfig, http, WagmiProvider as WagmiProviderBase } from 'wagmi'
+import { arbitrum, hardhat } from 'wagmi/chains'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { injected } from 'wagmi/connectors'
+
+const config = createConfig({
+  chains: [arbitrum, hardhat],
+  connectors: [injected()],
+  transports: {
+    [arbitrum.id]: http(),
+    [hardhat.id]: http('http://127.0.0.1:8545'),
+  },
+})
+
+const queryClient = new QueryClient()
+
+export default function WagmiProvider({ children }: { children: React.ReactNode }) {
+  return (
+    <WagmiProviderBase config={config}>
+      <QueryClientProvider client={queryClient}>
+        {children}
+      </QueryClientProvider>
+    </WagmiProviderBase>
+  )
+}

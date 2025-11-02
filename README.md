@@ -1,8 +1,3 @@
-**🚀 PASO 26: README.md para GitHub**
-
-Crea `README.md` en la raíz del proyecto:
-
-```markdown
 # 🌱 PollutionFi - DePIN Environmental Monitoring
 
 **Real-time air quality monitoring with blockchain incentives**
@@ -101,4 +96,3 @@ MIT License - Feel free to build upon this project!
 ---
 
 **💚 Making environmental responsibility profitable through blockchain**
-```

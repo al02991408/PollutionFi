@@ -77,6 +77,8 @@ Visit `http://localhost:3000`
 
 ## 🏗️ Smart Contracts
 
+https://sepolia.scrollscan.com/address/0x3fe0D624E4C14549A3891Cc2369C8616846aD821#code
+
 ### POLUToken (ERC-20)
 - Total Supply: 1,000,000 POLU
 - Minting: Authorized minters only
